@@ -1,0 +1,14 @@
+#
+# This file has been created during EnginFrame installation.
+# It contains only the installation specific settings.
+#
+# This file contains sensitive data and should be readable by the user running
+# EnginFrame but not accessible by others (read/write/execute).
+# EnginFrame will refuse to load this file if it is accessible by others.
+
+# Configuration for cluster dcvsm_cluster1
+DCVSM_CLUSTER_dcvsm_cluster1_AUTH_ID=1094508a-5776-47ad-8b73-771269c545ca
+DCVSM_CLUSTER_dcvsm_cluster1_AUTH_PASSWORD=MzNiYTBlZTMtMmFiYy00ZmE0LTljMTItOTE0YTUxMjBmMDBk
+DCVSM_CLUSTER_dcvsm_cluster1_AUTH_ENDPOINT=https://localhost:8445/oauth2/token
+DCVSM_CLUSTER_dcvsm_cluster1_SESSION_MANAGER_ENDPOINT=https://localhost:8445
+DCVSM_CLUSTER_dcvsm_cluster1_NO_STRICT_TLS=true

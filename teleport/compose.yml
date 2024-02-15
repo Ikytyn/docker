@@ -1,0 +1,30 @@
+version: '2'
+services:
+  teleport:
+    image: public.ecr.aws/gravitational/teleport:14.3.3
+    container_name: teleport
+#   entrypoint: /bin/sh
+    hostname: localhost
+    restart: always
+    ports:
+      - "3023:3023"
+      - "3025:3025"
+      - "3080:3080"
+      - "3028:3028"
+    volumes:
+      - ./config:/etc/teleport
+      - ./data:/var/lib/teleport
+      - ./etc/letsencrypt:/etc/letsencrypt
+    restart: always  
+    
+  certbot:
+    container_name: certbot
+    image: certbot/dns-ovh:latest
+    depends_on:
+      - teleport
+    command: >-
+             certonly --dns-ovh --dns-ovh-credentials /root/.secrets/certbot/ovh.ini --email test@exemple --agree-tos --no-eff-email -d test.teleport.exemple -d *.test.teleport.exemple
+    volumes:
+      - ./etc/letsencrypt:/etc/letsencrypt
+# I use ovh.ini for my certbot
+      - ./ovh.ini:/root/.secrets/certbot/ovh.ini

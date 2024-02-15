@@ -1,0 +1,65 @@
+---
+username: username
+password: password
+model: junos
+resolve_dns: true
+interval: 3600
+use_syslog: false
+debug: true
+threads: 30
+use_max_threads: false
+timeout: 20
+retries: 3
+prompt: !ruby/regexp /^([\w.@-]+[#>]\s?)$/
+rest: 0.0.0.0:8888
+next_adds_job: false
+vars:
+  ssh_keys: "/home/oxidized/.config/oxidized/.ssh/id_rsa"
+groups: {}
+group_map: {}
+models:
+  ciscosmb:
+    username: oxyconf
+    password: nil
+pid: "/home/oxidized/.config/oxidized/pid"
+crash:
+  directory: "/home/oxidized/.config/oxidized/crashes"
+  hostnames: false
+stats:
+  history_size: 10
+input:
+  default: ssh
+  debug: true
+  ssh:
+    secure: false
+  ftp:
+    passive: true
+  utf8_encoded: true
+output:
+  default: git
+  git:
+    single_repo: true
+    user: XXXXXXXOxidized
+    email: exemple.exemple.com
+    repo: /home/oxidized/.config/oxidized/output/configs.git
+hooks:
+  push_to_remote:
+    type: githubrepo
+    events: [post_store]
+    remote_repo: https://gitlab.d-ns.fr/sysadmin/config_XXXXXX.git
+    username: XXXXXXXXOxidized
+    password: PASSWORD_GENERE_SUR_GIT_XXXXXXXXXXXXX
+source:
+  default: http
+  debug: false
+  http:
+    url: http://localhost/api/v0/oxidized
+    map:
+      name: hostname
+      model: os
+      group: group
+    headers:
+      X-Auth-Token: LIBRENMS_API_CODE_xxxxxxxxxxxxxxx
+model_map:
+  juniper: junos
+  cisco: ios

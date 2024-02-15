@@ -1,0 +1,39 @@
+version: v3
+teleport:
+  nodename: XXXXXXXXXXXXXXX
+  data_dir: /var/lib/teleport
+  log:
+    output: stderr
+    severity: INFO
+    format:
+      output: text
+  ca_pin: ""
+  diag_addr: ""
+auth_service:
+  enabled: "yes"
+  listen_addr: 0.0.0.0:3025
+  proxy_listener_mode: multiplex
+ssh_service:
+  enabled: "yes"
+  commands:
+  - name: hostname
+    command: [hostname]
+    period: 1m0s
+proxy_service:
+  enabled: "yes"
+  https_keypairs: []
+  https_keypairs_reload_interval: 0s
+  acme: {}
+  https_cert_file: /etc/letsencrypt/live/XXXXXXXXX/fullchain.pem
+  https_key_file: /etc/letsencrypt/live/XXXXXXXXX/privkey.pem
+  public_addr: ["XXXXXXXXXXXXXXX"]
+app_service:
+  enabled: yes
+  debug_app: true
+  # apps:
+  #   - name: "test"
+  #     uri: "https://ip:port"
+  #     insecure_skip_verify: true
+  #     public_addr: "test.exemple"
+  #     labels:
+  #       type: "test"
