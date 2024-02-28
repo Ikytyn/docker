@@ -46,7 +46,7 @@ hooks:
   push_to_remote:
     type: githubrepo
     events: [post_store]
-    remote_repo: https://gitlab.d-ns.fr/sysadmin/config_XXXXXX.git
+    remote_repo: https://gitlab/config_XXXXXX.git
     username: XXXXXXXXOxidized
     password: PASSWORD_GENERE_SUR_GIT_XXXXXXXXXXXXX
 source:
