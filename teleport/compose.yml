@@ -15,7 +15,6 @@ services:
       - ./config:/etc/teleport
       - ./data:/var/lib/teleport
       - ./etc/letsencrypt:/etc/letsencrypt
-    restart: always  
     
   certbot:
     container_name: certbot
