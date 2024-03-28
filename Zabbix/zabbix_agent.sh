@@ -243,6 +243,7 @@ install_ubuntu_agent() {
     echo "Hostname : $hostname"
     echo "DNS name : $(hostname --fqdn)"
     echo "IP address : $(ip a | grep 'inet ' | grep -v '127.0.0.1' | head -n 1 | awk '{print $2}' | cut -d'/' -f1)"
+    echo "N'oublie pas de sélectionné le bon proxy."
     echo "---------------------------------------------------------------------------"
 }
 
